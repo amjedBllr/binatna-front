@@ -1,12 +1,11 @@
 import React from 'react'
-import LandingHome from '../../components/LandingHome.jsx'
-
+import Hero from '../../components/Hero.jsx'
+import About from '../../components/About.jsx'
 function Landing() {
   return (
-    <div id='landing-page' className="h-screen">
-        <LandingHome/>
-        
-        <p>next</p>
+    <div id='landing-page' className="h-screen landing">
+      <Hero />
+      <About />
     </div>
   )
 }

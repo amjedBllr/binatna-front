@@ -9,7 +9,7 @@ function LandingNav() {
     const navigate = useNavigate()
 
     const [isLogoHov , setIsLogoHov] = useState(false)
-
+    
     
 
 

@@ -2,9 +2,14 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx}",
   ],
   theme: {
+    screens: {
+      lg: '1440px',
+      md: '960px',
+      sm: '576px',
+    },
     extend: {
       colors: {
         primary: "#8ECAE6",

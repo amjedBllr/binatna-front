@@ -10,6 +10,7 @@ function LandingHome() {
       <div class='air air3'></div>
       <div class='air air4'></div>
       <LandingNav />
+      <div className='h-20'></div>
       <div class="flex flex-col items-start min-h-screen p-20">
         <h1 class="text-5xl font-bold text-white-200 mb-4">BINATNA <span className="text-tertiary">.</span></h1>
         <p class="text-xl font-semibold text-white-200 mb-4">Your secret spot for private chats with friends.</p>

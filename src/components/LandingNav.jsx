@@ -14,7 +14,7 @@ function LandingNav() {
 
 
   return (
-    <div className='w-full h-16 bg-slate-50 flex justify-between items-center px-20 py-10'>
+    <div className='w-full h-16 bg-slate-50 flex justify-between items-center px-20 py-10 fixed top-0 z-50'>
         <img src={!isLogoHov?logo1:logo2} onMouseOver={_=>{setIsLogoHov(!isLogoHov)}} onMouseOut={_=>{setIsLogoHov(!isLogoHov)}} className="h-10 cursor-pointer"/>
         <ul className='flex gap-10'>
             <li>

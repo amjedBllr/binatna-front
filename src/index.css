@@ -6,21 +6,35 @@
 @tailwind utilities;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    scroll-behavior: smooth;
-  }
-  
-body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+  z-index: 200;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 6px;
+
+}
+
+body {
   background-color: #ffffffe4;
 }
-#landing-page{
+
+#landing-page {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
-.landing{
+
+.landing {
   scroll-snap-align: start;
   position: relative;
   width: 100%;
@@ -28,7 +42,8 @@ body{
   background: #219EBC;
   overflow: hidden;
 }
-.landing .air{
+
+.landing .air {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -37,67 +52,77 @@ body{
   background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
   background-size: 1000px 100px
 }
-.landing .air.air1{
+
+.landing .air.air1 {
   animation: wave 30s linear infinite;
   z-index: 1000;
   opacity: 1;
   animation-delay: 0s;
   bottom: 0;
 }
-.landing .air.air2{
+
+.landing .air.air2 {
   animation: wave2 15s linear infinite;
   z-index: 999;
   opacity: 0.5;
   animation-delay: -5s;
   bottom: 10px;
 }
-.landing .air.air3{
+
+.landing .air.air3 {
   animation: wave 30s linear infinite;
   z-index: 998;
   opacity: 0.2;
   animation-delay: -2s;
   bottom: 15px;
 }
-.landing .air.air4{
+
+.landing .air.air4 {
   animation: wave2 5s linear infinite;
   z-index: 997;
   opacity: 0.7;
   animation-delay: -5s;
   bottom: 20px;
 }
-@keyframes wave{
-  0%{
-    background-position-x: 0px; 
+
+@keyframes wave {
+  0% {
+    background-position-x: 0px;
   }
-  100%{
-    background-position-x: 1000px; 
-  }
-}
-@keyframes wave2{
-  0%{
-    background-position-x: 0px; 
-  }
-  100%{
-    background-position-x: -1000px; 
+
+  100% {
+    background-position-x: 1000px;
   }
 }
 
-.chestnut{
+@keyframes wave2 {
+  0% {
+    background-position-x: 0px;
+  }
+
+  100% {
+    background-position-x: -1000px;
+  }
+}
+
+.chestnut {
   animation: float 15s infinite ease-out;
 }
 
 @keyframes float {
-  0%{
-    transform:translateY(0px);
+  0% {
+    transform: translateY(0px);
   }
-  25%{
-    transform:translateY(15px);
+
+  25% {
+    transform: translateY(15px);
   }
- 
-    75%{
-    transform:translateY(-15px); 
+
+  75% {
+    transform: translateY(-15px);
   }
-  100%{
-    transform:translateY(0px);
+
+  100% {
+    transform: translateY(0px);
   }
 }

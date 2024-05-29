@@ -81,3 +81,23 @@ body{
     background-position-x: -1000px; 
   }
 }
+
+.chestnut{
+  animation: float 15s infinite ease-out;
+}
+
+@keyframes float {
+  0%{
+    transform:translateY(0px);
+  }
+  25%{
+    transform:translateY(15px);
+  }
+ 
+    75%{
+    transform:translateY(-15px); 
+  }
+  100%{
+    transform:translateY(0px);
+  }
+}

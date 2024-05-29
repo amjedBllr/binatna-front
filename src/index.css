@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+body{
+  background-color: #ffffffe4;
+}
+#landing-page{
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+.landing{
+  scroll-snap-align: start;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #219EBC;
+  overflow: hidden;
+}
+.landing .air{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+  background-size: 1000px 100px
+}
+.landing .air.air1{
+  animation: wave 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+.landing .air.air2{
+  animation: wave2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+.landing .air.air3{
+  animation: wave 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+.landing .air.air4{
+  animation: wave2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+@keyframes wave{
+  0%{
+    background-position-x: 0px; 
+  }
+  100%{
+    background-position-x: 1000px; 
+  }
+}
+@keyframes wave2{
+  0%{
+    background-position-x: 0px; 
+  }
+  100%{
+    background-position-x: -1000px; 
+  }
+}
+
+.landing div > h1 {
+  animation : floating 30s ease-in-out infinite ;
+  transition: all .5s ease-out;
+}
+
+.landing .logo{
+  transition: all .5s;
+  scale: 1.4;
+  animation: btn2 15s infinite ease-in-out;
+}
+.landing .logo:hover{
+  transform: scale(1.5);
+}
+
+@keyframes floating {
+  0%{
+    transform:translate3d(0px,0px,0px);
+    scale: 1;
+  }
+  25%{
+    transform:translate3d(10px,5px,25px);
+    scale:1.2;
+  }
+  50%{
+    transform:translate3d(15px,0px,-25px);
+  }
+  75%{
+    transform:translate3d(-15px,-10px,2px);
+    scale:1.1;
+  }
+  100%{
+    transform:translate3d(0px,0px,0px);
+    scale:1;
+  }
+}
+
+.landing .button{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+  animation: btn1 infinite 15s ease-in-out;
+  transition: all .5s ease-out;
+}
+.landing .button:nth-child(2){
+  animation: btn2 infinite 15s ease-in-out;
+}
+
+.landing .button:hover img{
+  filter:invert(0);
+}
+.landing .button:hover p{
+  color:black
+}
+
+
+.landing .button img{
+  width: 130px;
+  height: 130px;
+  filter:invert(1);
+  transition: all .5s ease-out;
+}
+
+
+.landing .button p{
+  font-family: "Gochi Hand", cursive;
+  font-size: 18px;
+  font-weight: 400;
+  transition: all .5s ease-out;
+}
+
+@keyframes btn1 {
+  0%{
+    transform:translate(0px,0px);
+    
+  }
+  25%{
+    transform:translate(5px,5px);
+    
+  }
+  50%{
+    transform:translate(10px,0px);
+  }
+  75%{
+    transform:translate(0px,-10px);
+    
+  }
+  100%{
+    transform:translate(0px,0px);
+    
+  }
+}
+@keyframes btn2 {
+  0%{
+    transform:translate(0px,0px);
+    
+  }
+  25%{
+    transform:translate(-5px,-10px);
+    
+  }
+  50%{
+    transform:translate(0px,-5px);
+  }
+  75%{
+    transform:translate(10px,-10px);
+    
+  }
+  100%{
+    transform:translate(0px,0px);
+    
+  }
+}

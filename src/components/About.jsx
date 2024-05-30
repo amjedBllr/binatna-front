@@ -8,7 +8,7 @@ const About = () => {
       <div className="services flex flex-col items-start p-5">
         <h3 className='font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'>Our Services</h3>
         <br />
-        <div className='w-full flex flex-col sm:flex-row justify-between sm:px-10'>
+        <div className='w-full flex flex-col sm:flex-row justify-between sm:px-10 gap-5'>
           <div class="card">
             <h4 className='font-semibold text-lg'>Secret Room Chats</h4>
             <p className='py-5'>Create private rooms with unique links and passwords. Only your invited friends can join</p>
@@ -32,8 +32,8 @@ const About = () => {
         <div className='w-full sm:px-10'>
           <div class="founder-card">
             <h4 className='font-semibold text-lg'>Hey, I’m Amjed Bellir</h4>
-            <p className='py-5 sm:w-8/12 w-5/6 sm:tracking-normal tracking-wide'>the 21-year-old creator of BINATNA. As a full-stack web developer and IT grad, I’m all about making secure and fun chat platforms. <br/> Thanks for choosing My platform. Enjoy the privacy and fun. Reach out anytime with questions or feedback!</p>
-            <img src={founder} className="absolute right-28 top-5 h-60 hidden sm:block" />
+            <p className='py-5 sm:w-8/12 w-5/6 sm:tracking-normal tracking-wide'>the 21-year-old creator of BINATNA. As a full-stack web developer and IT grad, I’m all about making secure and fun chat platforms. <br/><br/> Thanks for choosing My platform. Enjoy the privacy and fun. Reach out anytime with questions or feedback!</p>
+            <img src={founder} className="absolute opacity-65 -z-1 sm:-right-8 sm:top-0 lg:right-28 top-5 h-52 lg:h-60 hidden sm:block" />
           </div>
         </div>
       </div>

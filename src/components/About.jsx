@@ -5,7 +5,7 @@ import founder from '../assets/images/founder.png';
 const About = () => {
   return (
     <div id="about" className="lg:container mx-auto py-20">
-      <div className="services flex flex-col items-start p-5">
+      <div className="services -my-2 flex flex-col items-start p-5">
         <h3 className='font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'>Our Services</h3>
         <br />
         <div className='w-full flex flex-col sm:flex-row justify-between sm:px-10 gap-5'>
@@ -26,7 +26,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="founder flex flex-col items-star p-5">
+      <div className="founder -my-2 flex flex-col items-start p-5">
         <h3 className='font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'>Our Founder</h3>
         <br />
         <div className='w-full sm:px-10'>

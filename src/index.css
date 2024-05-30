@@ -25,6 +25,11 @@
 
 }
 
+::selection {
+  background: #FB8500; /* Background color for the selected text */
+  color: #000000; /* Text color for the selected text */
+}
+
 body {
   background-color: #ffffffe4;
 }

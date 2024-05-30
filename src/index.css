@@ -145,6 +145,13 @@ body {
   transition: 0.6s ease-in;
 }
 
+@media only screen and (max-width : 600px) {
+  .card{
+    width:380px;
+    margin-bottom:15px;
+  }
+}
+
 .card::before {
   content: "";
   position: absolute;
@@ -208,4 +215,18 @@ body {
 .founder-card:hover{
     color: #ffffff;
 
+}
+
+@media only screen and (max-width : 600px) {
+  .founder-card{
+    width:380px;
+    height: 330px;
+  }
+  .founder-card::before {
+    height: 360px;
+  }
+  .founder-card:hover::before{
+    transition-delay:0.2s ;
+    transform: scale(40);
+  }
 }

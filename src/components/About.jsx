@@ -33,6 +33,7 @@ const About = () => {
           <div class="founder-card">
             <h4 className='font-semibold text-lg'>Hey, I’m Amjed Bellir</h4>
             <p className='py-5 w-8/12'>the 21-year-old creator of BINATNA. As a full-stack web developer and IT grad, I’m all about making secure and fun chat platforms. <br/> Thanks for choosing My platform. Enjoy the privacy and fun. Reach out anytime with questions or feedback!</p>
+            <img src={founder} className="absolute right-28 top-5 h-60" />
           </div>
         </div>
       </div>

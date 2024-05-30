@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import logo1 from '../assets/images/main.png';
 import logo2 from '../assets/images/main_blue.png';
+import logo3 from '../assets/images/main_white.png';
 import menu from '../assets/images/menu.png';
 import close from '../assets/images/close.png';
 
@@ -11,9 +12,9 @@ function LandingNav() {
     const [isMenuSelected, setIsMenuSelected] = useState(false);
 
     return (
-        <div className='w-full h-16 bg-slate-50 flex justify-between items-center px-10 sm:px-20 py-10 fixed top-0 z-50'>
+        <div className='w-full h-16 bg-secondary flex justify-between items-center px-10 sm:px-20 py-10 fixed top-0 z-50'>
             <img
-                src={!isLogoHov ? logo1 : logo2}
+                src={!isLogoHov ? logo3 : logo1}
                 onMouseOver={() => setIsLogoHov(true)}
                 onMouseOut={() => setIsLogoHov(false)}
                 className="h-10 cursor-pointer"
@@ -21,18 +22,18 @@ function LandingNav() {
             />
             <ul className='hidden gap-10 sm:flex'>
                 <li>
-                    <RouterLink to="/register" className='hover:text-secondary'>Get started</RouterLink>
+                    <RouterLink to="/register" className='text-white-200 hover:text-black-100'>Get started</RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/login" className='hover:text-secondary'>Login</RouterLink>
+                    <RouterLink to="/login" className='text-white-200 hover:text-black-100'>Login</RouterLink>
                 </li>
                 <li>
-                    <ScrollLink to="about" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>
+                    <ScrollLink to="about" smooth={true} duration={500} className='text-white-200 hover:text-black-100 cursor-pointer'>
                         About
                     </ScrollLink>
                 </li>
                 <li>
-                    <ScrollLink to="contact" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>
+                    <ScrollLink to="contact" smooth={true} duration={500} className='text-white-200 hover:text-black-100 cursor-pointer'>
                         Contact
                     </ScrollLink>
                 </li>
@@ -41,7 +42,7 @@ function LandingNav() {
             <img
                 src={!isMenuSelected ? menu : close}
                 onClick={() => setIsMenuSelected(!isMenuSelected)}
-                className='h-6 sm:hidden'
+                className='h-6 sm:hidden cursor-pointer'
                 alt="Menu"
             />
             {isMenuSelected && (

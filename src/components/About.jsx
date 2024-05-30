@@ -4,7 +4,7 @@ import founder from '../assets/images/founder.png';
 
 const About = () => {
   return (
-    <div id="about" className="container mx-auto py-20">
+    <div id="about" className="lg:container mx-auto py-20">
       <div className="services flex flex-col items-start p-5">
         <h3 className='font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'>Our Services</h3>
         <br />
@@ -33,7 +33,7 @@ const About = () => {
           <div class="founder-card">
             <h4 className='font-semibold text-lg'>Hey, I’m Amjed Bellir</h4>
             <p className='py-5 sm:w-8/12 w-5/6 sm:tracking-normal tracking-wide'>the 21-year-old creator of BINATNA. As a full-stack web developer and IT grad, I’m all about making secure and fun chat platforms. <br/><br/> Thanks for choosing My platform. Enjoy the privacy and fun. Reach out anytime with questions or feedback!</p>
-            <img src={founder} className="absolute opacity-65 -z-1 sm:-right-8 sm:top-0 lg:right-28 top-5 h-52 lg:h-60 hidden sm:block" />
+            <img src={founder} className="absolute opacity-65 -z-1 sm:-right-8 md:right-16 sm:top-0 top-5 h-60 hidden sm:block" />
           </div>
         </div>
       </div>

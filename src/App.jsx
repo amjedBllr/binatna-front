@@ -7,7 +7,6 @@ function App() {
     <>
     <Routes>
       <Route index element={<Landing/>}/>
-      <Route path='/about' element={<>about</>}/>
     </Routes>
     </>
   )

@@ -3,6 +3,7 @@ import logo1 from '../assets/images/main.png';
 import founder from '../assets/images/founder.png';
 import { motion } from 'framer-motion'
 
+
 const About = () => {
   return (
     <div id="about" className="lg:container mx-auto py-20">
@@ -86,7 +87,7 @@ const About = () => {
           right: 440,
           bottom: 240,
         }}
-        >Our Developer</motion.h3>
+        >Our Team</motion.h3>
         <br />
         <div className='w-full sm:px-10'>
         <motion.div class="founder-card"

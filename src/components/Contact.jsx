@@ -6,9 +6,20 @@ import { motion } from 'framer-motion'
 
 import MagicHouseCanvas from './canvas/MagicHouseCanvas';
 const Contact = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+
+    const [message, setMessage] = useState({
+        email: '',
+        name: '',
+        message: '',
+    });
+
+    const handleChange = (event) => {
+        const { value, name } = event.target;
+        setMessage(prev => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -64,16 +75,16 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className='flex gap-5 w-3/4'>
-                        <a href="https://www.facebook.com/your-facebook-profile" target="_blank" rel="noreferrer noopener">
+                        <a href="https://www.facebook.com/amjed.bellir" target="_blank" rel="noreferrer noopener">
                             <FontAwesomeIcon icon={faFacebook} className="text-lg hover:text-black-100" />
                         </a>
-                        <a href="https://www.twitter.com/your-twitter-profile" target="_blank" rel="noreferrer noopener">
+                        <a href="https://www.twitter.com/bamjed" target="_blank" rel="noreferrer noopener">
                             <FontAwesomeIcon icon={faTwitter} className="text-lg hover:text-black-100" />
                         </a>
-                        <a href="https://www.instagram.com/your-instagram-profile" target="_blank" rel="noreferrer noopener">
+                        <a href="https://www.instagram.com/amjed_bellir" target="_blank" rel="noreferrer noopener">
                             <FontAwesomeIcon icon={faInstagram} className="text-lg hover:text-black-100" />
                         </a>
-                        <a href="https://www.github.com/your-github-profile" target="_blank" rel="noreferrer noopener">
+                        <a href="https://github.com/amjedBllr" target="_blank" rel="noreferrer noopener">
                             <FontAwesomeIcon icon={faGithub} className="text-lg hover:text-black-100" />
                         </a>
                     </div>
@@ -82,14 +93,14 @@ const Contact = () => {
 
 
                 <div className='flex flex-col gap-5 h-5/6 w5/12 text-black-100'>
-                    <h4 className="font-medium">Send Message :  </h4>
-                    <label for="email" >Email</label>
-                    <input name="email" value={email} />
-                    <label for="name" >Name</label>
-                    <input name="name" value={name} />
-                    <label for="message" >Message</label>
-                    <textarea name='message' vlaue={message}></textarea>
-                    <input type="submit" value="submit"></input>
+                    <h4 className="font-medium">Send Message : </h4>
+                    <label for="email">Email</label>
+                    <input name="email" value={message.email} onChange={handleChange} />
+                    <label for="name">Name</label>
+                    <input name="name" value={message.name} onChange={handleChange} />
+                    <label for="message">Message</label>
+                    <textarea name='message' value={message.message} onChange={handleChange}></textarea>
+                    <input type="submit" value="Submit" />
                 </div>
             </div>
         </div>

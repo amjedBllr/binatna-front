@@ -10,7 +10,7 @@ const Contact = () => {
 
     return (
         <div id="contact" className="h-screen w-full mx-auto py-10 flex flex-col mb-10">
-            <motion.h3 className='hover:cursor-grab active:cursor-grabbing w-fit font-bold text-secondary z-10 text-2xl p-5 sm:pl-32 pl-10'
+            <motion.h3 className='hover:cursor-grab active:cursor-grabbing w-fit font-bold text-secondary z-10 text-2xl p-5 sm:pl-44 pl-10'
         drag
         dragConstraints={{
           top: -40,

@@ -9,7 +9,7 @@ import talk from '../assets/images/talk.avif'
 const Contact = () => {
 
     return (
-        <div id="contact" className="h-screen w-full mx-auto pt-10 flex flex-col">
+        <div id="contact" className="h-screen w-full mx-auto py-10 flex flex-col mb-10">
             <motion.h3 className='hover:cursor-grab active:cursor-grabbing w-fit font-bold text-secondary z-10 text-2xl p-5 sm:pl-32 pl-10'
         drag
         dragConstraints={{
@@ -20,7 +20,7 @@ const Contact = () => {
         }}
         >Get in touch</motion.h3>
 
-            <div className='w-full pt-10 flex-col sm:flex-row flex justify-center items-center gap-x-20 px-5 text-white relative'>
+            <div className='w-full pt-10 flex-col gap-5 sm:flex-row flex justify-center items-center gap-x-20 px-5 text-white relative'>
 
             <motion.img 
             src={talk}
@@ -96,6 +96,8 @@ const Contact = () => {
                 </motion.div>
                
             </div>
+
+            <div className='h-15 py-10 w-full'/>
         </div>
     );
 };

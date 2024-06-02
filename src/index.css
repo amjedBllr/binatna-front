@@ -27,20 +27,11 @@
 
 ::selection {
   background: #FB8500; /* Background color for the selected text */
-  color: white00; /* Text color for the selected text */
+  color: white; /* Text color for the selected text */
 }
 
 body {
   background-color: #ffffffe4;
-}
-
-#landing-page {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-}
-
-#landing-page>div {
-  scroll-snap-align: start;
 }
 
 .hero {

@@ -13,13 +13,17 @@ function LandingNav() {
 
     return (
         <div className='w-full h-16 bg-secondary flex justify-between items-center px-10 sm:px-20 py-10 fixed top-0 z-50'>
-            <img
-                src={!isLogoHov ? logo3 : logo1}
-                onMouseOver={() => setIsLogoHov(true)}
-                onMouseOut={() => setIsLogoHov(false)}
-                className="h-10 cursor-pointer"
-                alt="Logo"
-            />
+
+            <ScrollLink to="hero" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>
+                <img
+                    src={!isLogoHov ? logo3 : logo1}
+                    onMouseOver={() => setIsLogoHov(true)}
+                    onMouseOut={() => setIsLogoHov(false)}
+                    className="h-10 cursor-pointer"
+                    alt="Logo"
+                />
+            </ScrollLink>
+
             <ul className='hidden gap-10 sm:flex'>
                 <li>
                     <RouterLink to="/register" className='text-white-200 hover:text-black-100'>Get started</RouterLink>
@@ -54,12 +58,12 @@ function LandingNav() {
                         <RouterLink to="/login" className='hover:text-secondary'>Login</RouterLink>
                     </li>
                     <li>
-                        <ScrollLink to="#about" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>
+                        <ScrollLink to="about" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>
                             About
                         </ScrollLink>
                     </li>
                     <li>
-                        <ScrollLink to="#contact" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>
+                        <ScrollLink to="contact" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>
                             Contact
                         </ScrollLink>
                     </li>

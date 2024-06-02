@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import Loader from './Loader.jsx'
 import { Link } from 'react-router-dom'
 import LandingNav from './LandingNav'
 import ChestnutCanvas from './canvas/ChestnutCanvas'
 function Hero() {
+
+  const handleLearnMore = _ => {
+    const element = document.getElementById("about")
+    const page = document.getElementById("landing-page")
+
+    console.log(page)
+    window.scrollTo(
+      {
+        top: element?.getBoundingClientRect().top,
+        left: 0,
+        behavior: 'smooth'
+      }
+    )
+  }
+
   return (
-    <div className="w-full h-screen relative hero">
+    <Suspense fallback={<Loader/>}>
+    <div id='hero' className="w-full h-screen relative hero">
       <div className='air air1'></div>
       <div className='air air2'></div>
       <div className='air air3'></div>
@@ -17,11 +34,12 @@ function Hero() {
         <p className="sm:text-lg text-s text-gray-300 mb-8">Invite friends to private chat rooms or chat with our friendly bots when you're alone.</p>
         <div className="flex space-x-4">
           <Link to="/register" className=" font-medium text-sm sm:text-base bg-tertiary text-white px-4 py-2 rounded-md hover:bg-primary active:opacity-90">Get started</Link>
-          <Link to="#about" className="font-medium text-sm sm:text-base bg-transparent border border-white text-white-200 px-4 py-2 rounded-md hover:border-black-100 hover:text-black-100">Learn more.</Link>
+          <Link onClick={handleLearnMore} className="font-medium text-sm sm:text-base bg-transparent border border-white text-white-200 px-4 py-2 rounded-md hover:border-black-100 hover:text-black-100">Learn more.</Link>
         </div>
       </div>
       <ChestnutCanvas />
     </div>
+    </Suspense >
   )
 }
 

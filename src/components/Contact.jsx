@@ -9,12 +9,22 @@ import talk from '../assets/images/talk.avif'
 const Contact = () => {
 
     return (
-        <div className="h-screen mx-auto pt-24">
-            <div className='w-full h-full flex-col sm:flex-row flex justify-center items-center gap-x-20 px-5 text-white relative'>
+        <div id="contact" className="h-screen mx-auto pt-10">
+            <motion.h3 className='hover:cursor-grab active:cursor-grabbing font-bold text-secondary text-2xl p-5 sm:pl-32 pl-10'
+        drag
+        dragConstraints={{
+          top: -40,
+          left: -40,
+          right: 440,
+          bottom: 540,
+        }}
+        >Get in touch</motion.h3>
+
+            <div className='w-full pt-10 flex-col sm:flex-row flex justify-center items-center gap-x-20 px-5 text-white relative'>
 
             <motion.img 
             src={talk}
-            className='w-2/4'
+            className='w-2/4 md:w-1/4'
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

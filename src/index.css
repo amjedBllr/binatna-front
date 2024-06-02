@@ -147,7 +147,7 @@ body {
 
 @media only screen and (max-width : 576px) {
   .card{
-    width:380px;
+    width:360px;
   }
 }
 
@@ -220,7 +220,7 @@ body {
 
 @media only screen and (max-width : 576px) {
   .founder-card{
-    width:380px;
+    width:360px;
     height: 330px;
   }
   .founder-card br{

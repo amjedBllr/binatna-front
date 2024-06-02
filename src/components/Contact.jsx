@@ -10,7 +10,7 @@ const Contact = () => {
 
     return (
         <div className="h-screen mx-auto pt-24">
-            <div className='w-full h-full flex-col flex justify-center items-center gap-x-20 px-5 text-white relative'>
+            <div className='w-full h-full flex-col sm:flex-row flex justify-center items-center gap-x-20 px-5 text-white relative'>
 
             <motion.img 
             src={talk}

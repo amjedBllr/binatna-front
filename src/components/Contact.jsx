@@ -9,14 +9,14 @@ import talk from '../assets/images/talk.avif'
 const Contact = () => {
 
     return (
-        <div id="contact" className="h-screen mx-auto pt-10">
-            <motion.h3 className='hover:cursor-grab active:cursor-grabbing font-bold text-secondary text-2xl p-5 sm:pl-32 pl-10'
+        <div id="contact" className="h-screen w-full mx-auto pt-10 flex flex-col">
+            <motion.h3 className='hover:cursor-grab active:cursor-grabbing w-fit font-bold text-secondary z-10 text-2xl p-5 sm:pl-32 pl-10'
         drag
         dragConstraints={{
           top: -40,
           left: -40,
-          right: 440,
-          bottom: 540,
+          right: 560,
+          bottom: 340,
         }}
         >Get in touch</motion.h3>
 

@@ -2,6 +2,8 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { useEffect, useState } from "react";
+import moon from '../../assets/images/moon.png'
+import { motion } from 'framer-motion'
 
 function MagicHouse() {
     const MagicHouse = useGLTF("/magic_house/scene.gltf");
@@ -45,10 +47,17 @@ function MagicHouse() {
 
 function MagicHouseCanvas() {
     return (
-        <div className="absolute -z-5 sm:-left-96 sm:-bottom-20 magichouse w-full h-full flex justify-center items-center pr-36">
-            <div className="w-80 h-80 bg-secondary rounded-full absolute"/>
+        <div
+        drag
+        dragConstraints={{
+          top: -340,
+          left: -40,
+          right: 440,
+          bottom: 240,
+        }} 
+        className=" -z-5 sm:-left-96 sm:-bottom-20 magichouse w-1/2 h-full flex justify-center items-center pr-36 -pt-24">
+            <img src={moon} className="w-80 h-80 bg-white rounded-full absolute moon"/>
                 <Canvas
-                    className="w-full h-ful"
                     frameloop="demand"
                     shadows
                     dpr={[1, 2]}

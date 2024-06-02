@@ -34,7 +34,7 @@ function Chestnut() {
             ? 1.1 // Increased scale for smaller screens
             : screenWidth < 900
               ? 1.2 // Intermediate scale for medium screens
-              : 1.1 // Base scale for larger screens
+              : 1.2 // Base scale for larger screens
         }
         position={[0, 0, 0]} // Adjust position dynamically
         rotation={[0, rotationY, 0]} // Apply animation to Y-axis rotation
@@ -45,7 +45,7 @@ function Chestnut() {
 
 function ChestnutCanvas() {
   return (
-    <div className="absolute z-10 bottom-0 right-0 sm:left-64 sm:bottom-10 sm:left-0 chestnut w-full h-1/2 flex justify-center ">
+    <div className="absolute z-15 -bottom-10 right-0 sm:right-24 sm:bottom-10 chestnut w-full md:w-1/2 h-1/2 flex justify-center ">
       <Canvas
         className="w-full h-full"
         frameloop="demand"

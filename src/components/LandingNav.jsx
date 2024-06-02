@@ -42,7 +42,7 @@ function LandingNav() {
             <img
                 src={!isMenuSelected ? menu : close}
                 onClick={() => setIsMenuSelected(!isMenuSelected)}
-                className='h-6 sm:hidden cursor-pointer'
+                className='h-6 sm:hidden cursor-pointer invert'
                 alt="Menu"
             />
             {isMenuSelected && (

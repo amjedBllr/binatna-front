@@ -8,7 +8,7 @@ const About = () => {
   return (
     <div id="about" className="lg:container mx-auto py-20">
       <div className="services -my-2 flex flex-col items-start p-5">
-        <motion.h3 className='font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'
+        <motion.h3 className='hover:cursor-grab active:cursor-grabbing font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'
         drag
         dragConstraints={{
           top: -40,
@@ -20,7 +20,7 @@ const About = () => {
         <br />
         <div className='w-full flex flex-col sm:flex-row justify-between sm:px-10 gap-5'>
 
-          <motion.div class="card"
+          <motion.div className="hover:cursor-grab active:cursor-grabbing card"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -38,7 +38,7 @@ const About = () => {
             <p className='py-5'>Create private rooms with unique links and passwords. Only your invited friends can join</p>
           </motion.div>
 
-          <motion.div class="card"
+          <motion.div className="card hover:cursor-grab active:cursor-grabbing"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -57,7 +57,7 @@ const About = () => {
             <p className='py-5'>Chat with our cool bot when you’re alone or let it join group chats for fun interactions..</p>
           </motion.div>
 
-          <motion.div class="card"
+          <motion.div class="card hover:cursor-grab active:cursor-grabbing"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -79,7 +79,7 @@ const About = () => {
       </div>
 
       <div className="founder -my-2 flex flex-col items-start p-5">
-        <motion.h3 className='font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'
+        <motion.h3 className='hover:cursor-grab active:cursor-grabbing font-bold text-secondary text-2xl p-5 sm:pl-24 pl-5'
         drag
         dragConstraints={{
           top: -340,
@@ -90,7 +90,7 @@ const About = () => {
         >Our Team</motion.h3>
         <br />
         <div className='w-full sm:px-10'>
-        <motion.div class="founder-card"
+        <motion.div class="hover:cursor-grab active:cursor-grabbing founder-card"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

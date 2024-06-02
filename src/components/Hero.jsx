@@ -16,8 +16,8 @@ function Hero() {
         <p className="sm:text-xl text-s font-semibold text-white-200 mb-4">Your secret spot for private chats with friends.</p>
         <p className="sm:text-lg text-s text-gray-300 mb-8">Invite friends to private chat rooms or chat with our friendly bots when you're alone.</p>
         <div className="flex space-x-4">
-          <Link to="/register" className="font-medium bg-tertiary text-white px-4 py-2 rounded-md hover:opacity-95">Get started</Link>
-          <Link to="#about" className="font-medium bg-transparent border border-white text-white-200 px-4 py-2 rounded-md hover:border-tertiary hover:text-tertiary">Learn more.</Link>
+          <Link to="/register" className=" font-medium text-sm sm:text-base bg-tertiary text-white px-4 py-2 rounded-md hover:bg-primary active:opacity-90">Get started</Link>
+          <Link to="#about" className="font-medium text-sm sm:text-base bg-transparent border border-white text-white-200 px-4 py-2 rounded-md hover:border-black-100 hover:text-black-100">Learn more.</Link>
         </div>
       </div>
       <ChestnutCanvas />

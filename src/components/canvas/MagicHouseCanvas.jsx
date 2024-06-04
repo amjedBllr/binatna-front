@@ -49,7 +49,7 @@ function MagicHouseCanvas() {
     return (
         <div
         className="magichouse w-full h-full flex justify-center items-center">
-            <div className="absolute w-2/6 aspect-square rounded-full bg-tertiary" />
+            <div className="absolute w-2/6 aspect-square rounded-full bg-black-100" />
                 <Canvas
                     frameloop="demand"
                     shadows

@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 function Login() {
 
@@ -42,15 +44,14 @@ function Login() {
   }, [])
 
   return (
-    <div className="h-full w-full flex items-center justify-center">
-      <div className="w-10/12 sm:w-8/12 py-10 px-5 rounded-xl space-y-2 bg-white">
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="w-10/12 sm:w-8/12 py-10 px-5 sm:px-10 rounded-xl space-y-2">
         <div>
-          <h2 className="text-center text-2xl sm:text-3xl font-bold text-gray-900">
+          <h2 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 pb-5">
             LOG IN
           </h2>
         </div>
         <form className=" flex flex-col" onSubmit={handleSubmit}>
-          <input type="hidden" name="remember" value="true" />
           <div className="flex flex-col gap-3">
             <div>
               <label
@@ -64,7 +65,7 @@ function Login() {
                 name="email"
                 type="text"
                 required
-                className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
                 value={form.email}
                 onChange={handleChange}
               />
@@ -78,7 +79,7 @@ function Login() {
                 name="password"
                 type="password"
                 required
-                className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-sm  placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
                 value={form.password}
                 onChange={handleChange}
               />
@@ -95,7 +96,7 @@ function Login() {
               to="/register"
               className="font-medium text-secondary hover:text-primary"
             >
-              Sign up
+              Register
             </Link>
           </p>
         </div>
@@ -111,12 +112,14 @@ function Login() {
           </p>
         </div>
         <h3 className="text-center font-medium p-5">OR</h3>
-        
-        <div>
-          Continue with Google
+
+        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-primary hover:text-primary cursor-pointer">
+        <FontAwesomeIcon icon={faGoogle} className="scale-125" />
+          <p className="text-sm sm:text-base">Continue with Google</p>
         </div>
-        <div>
-          Continue with Instagram
+        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-primary hover:text-primary cursor-pointer">
+        <FontAwesomeIcon icon={faInstagram} className="scale-150"  />
+          <p className="text-sm sm:text-base" >Continue with Instagr</p>
         </div>
       </div>
     </div>

@@ -1,9 +1,130 @@
-import React from 'react'
+
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Login() {
+
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+    console.log(form);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!isLoggedIn) {
+      try {
+        const login = await axios.post(
+          `${serverUrl}/api/v1/auth/login`, form, { withCredentials: true })
+        let role = login.data.data.role;
+        setChanged(true)
+        if (role === 'client') navigate('/client/home')
+        else if (role === 'seller') navigate('/seller/home/store')
+        else if (role === 'admin') navigate('/admin/home')
+      } catch (error) {
+        console.log(error.response.data)
+      }
+    }
+  };
+
+  useEffect(() => {
+
+  }, [])
+
   return (
-    <div>login</div>
+    <div className="h-full w-full flex items-center justify-center">
+      <div className="w-10/12 sm:w-8/12 py-10 px-5 rounded-xl space-y-2 bg-white">
+        <div>
+          <h2 className="text-center text-2xl sm:text-3xl font-bold text-gray-900">
+            LOG IN
+          </h2>
+        </div>
+        <form className=" flex flex-col" onSubmit={handleSubmit}>
+          <input type="hidden" name="remember" value="true" />
+          <div className="flex flex-col gap-3">
+            <div>
+              <label
+                htmlFor="email-or-phone"
+                className="ml-2 text-sm sm:text-base text-gray-900"
+              >
+                Email address
+              </label>
+              <input
+                id="email-or-phone"
+                name="email"
+                type="text"
+                required
+                className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                value={form.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="ml-2 text-sm sm:text-base text-gray-900">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-sm  placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                value={form.password}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <button onClick={handleSubmit} className="button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
+            Next
+          </button>
+        </form>
+        <div>
+          <p className="text-center text-gray-500 text-sm">
+            Don't have an account?{" "}
+            <Link
+              to="/register"
+              className="font-medium text-secondary hover:text-primary"
+            >
+              Sign up
+            </Link>
+          </p>
+        </div>
+        <div>
+          <p className="text-center text-gray-500 text-sm">
+            Forgot your password?{" "}
+            <a
+              href="#"
+              className="font-medium text-secondary hover:text-primary"
+            >
+              Reset password
+            </a>
+          </p>
+        </div>
+        <h3 className="text-center font-medium p-5">OR</h3>
+        
+        <div>
+          Continue with Google
+        </div>
+        <div>
+          Continue with Instagram
+        </div>
+      </div>
+    </div>
   )
 }
 
 export default Login
+
+
+
+

@@ -48,20 +48,13 @@ function MagicHouse() {
 function MagicHouseCanvas() {
     return (
         <div
-        drag
-        dragConstraints={{
-          top: -340,
-          left: -40,
-          right: 440,
-          bottom: 240,
-        }} 
-        className=" -z-5 sm:-left-96 sm:-bottom-20 magichouse w-1/2 h-full flex justify-center items-center pr-36 -pt-24">
-            <img src={moon} className="w-80 h-80 bg-white rounded-full absolute moon"/>
+        className="magichouse w-full h-full flex justify-center items-center">
+            <div className="absolute w-8/12 aspect-square rounded-full bg-primary" />
                 <Canvas
                     frameloop="demand"
                     shadows
                     dpr={[1, 2]}
-                    camera={{ position: [30, 4, 5], fov: 15 }}
+                    camera={{ position: [20, 4, 5], fov: 15 }}
                     gl={{ preserveDrawingBuffer: true }}
                 >
                     <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />

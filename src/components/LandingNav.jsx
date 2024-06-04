@@ -26,10 +26,10 @@ function LandingNav() {
 
             <ul className='hidden gap-10 sm:flex'>
                 <li>
-                    <RouterLink to="/register" className='text-white-200 hover:text-black-100'>Get started</RouterLink>
+                    <RouterLink to="/auth/register" className='text-white-200 hover:text-black-100'>Get started</RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/login" className='text-white-200 hover:text-black-100'>Login</RouterLink>
+                    <RouterLink to="/auth/login" className='text-white-200 hover:text-black-100'>Login</RouterLink>
                 </li>
                 <li>
                     <ScrollLink to="about" smooth={true} duration={500} className='text-white-200 hover:text-black-100 cursor-pointer'>

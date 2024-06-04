@@ -52,10 +52,10 @@ function LandingNav() {
             {isMenuSelected && (
                 <ul className='sm:hidden gap-10 flex flex-col justify-center items-center absolute bg-white-200 top-20 right-10 p-10 rounded-lg'>
                     <li>
-                        <RouterLink to="/register" className='hover:text-secondary'>Get started</RouterLink>
+                        <RouterLink to="/auth/register" className='hover:text-secondary'>Get started</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/login" className='hover:text-secondary'>Login</RouterLink>
+                        <RouterLink to="/auth/login" className='hover:text-secondary'>Login</RouterLink>
                     </li>
                     <li>
                         <ScrollLink to="about" smooth={true} duration={500} className='hover:text-secondary cursor-pointer'>

@@ -44,7 +44,7 @@ function Login() {
   }, [])
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-full flex justify-center md:justify-start items-center">
       <div className="w-10/12 sm:w-8/12 py-10 px-5 sm:px-10 rounded-xl space-y-2">
         <div>
           <h2 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 pb-5">
@@ -113,11 +113,11 @@ function Login() {
         </div>
         <h3 className="text-center font-medium p-5">OR</h3>
 
-        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-primary hover:text-primary cursor-pointer">
+        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-tertiary hover:text-tertiary cursor-pointer">
         <FontAwesomeIcon icon={faGoogle} className="scale-125" />
           <p className="text-sm sm:text-base">Continue with Google</p>
         </div>
-        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-primary hover:text-primary cursor-pointer">
+        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-tertiary hover:text-tertiary cursor-pointer">
         <FontAwesomeIcon icon={faInstagram} className="scale-150"  />
           <p className="text-sm sm:text-base" >Continue with Instagr</p>
         </div>

@@ -15,7 +15,7 @@ function Register() {
   const [form, setForm] = useState({
     email: "",
     password: "",
-    CoPassword: "",
+    coPassword: "",
     username: "",
     firstname: "",
     lastname: "",
@@ -34,6 +34,7 @@ function Register() {
   //? form appearence helper state
   const [step, setStep] = useState(1)
 
+  const [message,setMessage] = useState("")
 
   //?handle value typed inputs
   const handleChange = (e) => {
@@ -46,9 +47,31 @@ function Register() {
 
   //? next  button handler
 
-  const handleNext = _ => {
-    setStep(step + 1)
-  }
+  const handleNext = () => {
+    // Check if it's time to move to the next step
+    if (step <= 2) {
+      // Step-specific validations before proceeding to the next step
+      switch (step) {
+        case 1:
+          if (form.password !== form.coPassword) {
+          setMessage("Passwords are unmatched !!")
+          break ;
+          }
+          
+        default:
+          setMessage("")
+          setStep(step + 1);
+          break;
+      }
+  
+      // Proceed to the next step
+      
+    } else {
+      // Submit the form (step === 3)
+      handleSubmit();
+    }
+  };
+  
 
   //? handle pfp change 
 
@@ -146,16 +169,16 @@ function Register() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="CoPassword" className="ml-2 text-sm sm:text-base text-gray-900">
+                  <label htmlFor="coPassword" className="ml-2 text-sm sm:text-base text-gray-900">
                     Confirm password
                   </label>
                   <input
-                    id="CoPassword"
-                    name="CoPassword"
+                    id="coPassword"
+                    name="coPassword"
                     type="password"
                     required
                     className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
-                    value={form.CoPassword}
+                    value={form.coPassword}
                     onChange={handleChange}
                   />
                 </div>
@@ -354,24 +377,29 @@ function Register() {
 
 
           </div>
+          
+          <div className="flex flex-col justify-between gap-2">
+          <p className="text-red-400 text-sm pl-3">
+            {message}
+          </p>
           <div className="w-full flex justify-between items-center gap-5">
             {
               (step >= 2) && (
                 <button onClick={_ => {
                   setStep(step - 1)
                 }}
-                  className="flex-1 button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
+                  className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
                   &#8592; &nbsp; &nbsp; Prev
                 </button>
               )
             }
-            <button onClick={_ => {
-              setStep(step + 1)
-            }}
-              className="flex-1 button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
-              Next &nbsp; &nbsp; &#8594;
+            <button onClick={handleNext}
+              className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
+              {step === 3 ? "Submit" : "Next \u00A0 \u00A0 \u2192"}
             </button>
           </div>
+          </div>
+          
 
         </form>
         {step === 1 && (<>

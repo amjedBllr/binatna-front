@@ -34,7 +34,7 @@ function Register() {
   //? form appearence helper state
   const [step, setStep] = useState(1)
 
-  const [message,setMessage] = useState("")
+  const [message, setMessage] = useState("")
 
   //?handle value typed inputs
   const handleChange = (e) => {
@@ -47,31 +47,36 @@ function Register() {
 
   //? next  button handler
 
+
   const handleNext = () => {
-    // Check if it's time to move to the next step
     if (step <= 2) {
-      // Step-specific validations before proceeding to the next step
       switch (step) {
         case 1:
           if (form.password !== form.coPassword) {
-          setMessage("Passwords are unmatched !!")
-          break ;
+            setMessage("Passwords do not match!");
+            return;
           }
-          
+          if (!form.email || !form.password || !form.coPassword) {
+            setMessage("Please fill out all required fields.");
+            return;
+          }
+          break;
+        case 2:
+          if (!form.firstname || !form.lastname || !form.birthDay || !form.gender || !form.country || !form.city) {
+            setMessage("Please fill out all required fields.");
+            return;
+          }
+          break;
         default:
-          setMessage("")
-          setStep(step + 1);
           break;
       }
-  
-      // Proceed to the next step
-      
+      setMessage("");
+      setStep(step + 1);
     } else {
-      // Submit the form (step === 3)
       handleSubmit();
     }
   };
-  
+
 
   //? handle pfp change 
 
@@ -243,20 +248,19 @@ function Register() {
                 </div>
 
                 <div>
-                <label htmlFor="gender" className="ml-2 text-sm sm:text-base text-gray-900">
-                  Gender
-                </label>
-                <select
-                  id="gender"
-                  name="gender"
-                  className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
-                  value={form.gender}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="male">male</option>
-                  <option value="female">female</option>
-                </select>
+                  <select
+                    id="gender"
+                    name="gender"
+                    className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                    value={form.gender}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+
                 </div>
 
                 <div className="flex justify-between items-center gap-4">
@@ -280,7 +284,7 @@ function Register() {
 
                   <div className="flex-1">
                     <label htmlFor="city" className="ml-2 text-sm sm:text-base text-gray-900">
-                    City
+                      City
                     </label>
                     <input
                       id="city"
@@ -377,29 +381,29 @@ function Register() {
 
 
           </div>
-          
+
           <div className="flex flex-col justify-between gap-2">
-          <p className="text-red-400 text-sm pl-3">
-            {message}
-          </p>
-          <div className="w-full flex justify-between items-center gap-5">
-            {
-              (step >= 2) && (
-                <button onClick={_ => {
-                  setStep(step - 1)
-                }}
-                  className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
-                  &#8592; &nbsp; &nbsp; Prev
-                </button>
-              )
-            }
-            <button onClick={handleNext}
-              className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
-              {step === 3 ? "Submit" : "Next \u00A0 \u00A0 \u2192"}
-            </button>
+            <p className="text-red-400 text-sm pl-3">
+              {message}
+            </p>
+            <div className="w-full flex justify-between items-center gap-5">
+              {
+                (step >= 2) && (
+                  <button onClick={_ => {
+                    setStep(step - 1)
+                  }}
+                    className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
+                    &#8592; &nbsp; &nbsp; Prev
+                  </button>
+                )
+              }
+              <button onClick={handleNext}
+                className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
+                {step === 3 ? "Submit" : "Next \u00A0 \u00A0 \u2192"}
+              </button>
+            </div>
           </div>
-          </div>
-          
+
 
         </form>
         {step === 1 && (<>

@@ -77,7 +77,7 @@ function Register() {
             REGISTER
           </h2>
         </div>
-        <form className=" flex flex-col justify-between h-4/6" onSubmit={handleSubmit}>
+        <form className={`flex flex-col justify-between ${(step === 1) ? "h-4/6" : "h-5/6"} `} onSubmit={handleSubmit}>
           <div className="flex flex-col gap-3">
 
 
@@ -125,7 +125,7 @@ function Register() {
                   <input
                     id="CoPassword"
                     name="CoPassword"
-                    type="CoPassword"
+                    type="password"
                     required
                     className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
                     value={form.CoPassword}
@@ -143,8 +143,58 @@ function Register() {
               step === 2 &&
 
               (<>
-                the second step
-              </>)}
+
+              //!zid div ta3 pfp
+                <div>
+                  <label
+                    htmlFor="email-or-phone"
+                    className="ml-2 text-sm sm:text-base text-gray-900"
+                  >
+                    Username
+                  </label>
+                  <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    required
+                    className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                    value={form.username}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="gender" className="ml-2 text-sm sm:text-base text-gray-900">
+                    Gender
+                  </label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                    value={form.gender}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                  </select>
+
+                </div>
+                <div>
+                  <label htmlFor="bio" className="ml-2 text-sm sm:text-base text-gray-900">
+                  Bio
+                  </label>
+                  <textarea
+                    id="bio"
+                    name="bio"
+                    type="text"
+                    required
+                    className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                    value={form.bio}
+                    onChange={handleChange}
+                  />
+                </div>
+              </>)
+            }
 
 
           </div>
@@ -169,7 +219,7 @@ function Register() {
             <p className="text-center text-gray-500 text-sm">
               You already have an account?{" "}
               <Link
-                to="/auth/register"
+                to="/auth/login"
                 className="font-medium text-secondary hover:text-primary"
               >
                 Sign in

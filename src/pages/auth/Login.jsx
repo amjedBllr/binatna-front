@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle, faInstagram , faSquareInstagram , faFacebookF} from '@fortawesome/free-brands-svg-icons';
 
 function Login() {
 
@@ -86,14 +86,14 @@ function Login() {
             </div>
           </div>
           <button onClick={handleSubmit} className="button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
-            Next
+            Sumbit
           </button>
         </form>
         <div>
           <p className="text-center text-gray-500 text-sm">
             Don't have an account?{" "}
             <Link
-              to="/register"
+              to="/auth/register"
               className="font-medium text-secondary hover:text-primary"
             >
               Register
@@ -111,15 +111,17 @@ function Login() {
             </a>
           </p>
         </div>
-        <h3 className="text-center font-medium p-5">OR</h3>
-
-        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-tertiary hover:text-tertiary cursor-pointer">
-        <FontAwesomeIcon icon={faGoogle} className="scale-125" />
-          <p className="text-sm sm:text-base">Continue with Google</p>
-        </div>
-        <div className="flex justify-center items-center gap-5 border-gray-500 border-2 rounded-xl py-2 m-5 hover:border-tertiary hover:text-tertiary cursor-pointer">
-        <FontAwesomeIcon icon={faInstagram} className="scale-150"  />
-          <p className="text-sm sm:text-base" >Continue with Instagr</p>
+        <h3 className="text-center font-medium p-5">OR continue with</h3>
+        <div className="flex justify-center align-baseline gap-10">
+          <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
+            <FontAwesomeIcon icon={faGoogle} className="scale-125" />
+          </div>
+          <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
+            <FontAwesomeIcon icon={faInstagram} className="scale-150" />
+          </div>
+          <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
+            <FontAwesomeIcon icon={faFacebookF} className="scale-125" />
+          </div>
         </div>
       </div>
     </div>

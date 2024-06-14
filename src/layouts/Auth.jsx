@@ -23,7 +23,7 @@ function Auth() {
                     <MagicHouseCanvas/>
                 </div>
 
-                <div className="w-full md:w-1/2 bg-white sm:mt-2 -mt-24"  >
+                <div className="w-full md:w-1/2 bg-white sm:mt-2 -mt-16"  >
                     <Outlet />
                 </div>
 

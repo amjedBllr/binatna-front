@@ -162,18 +162,128 @@ function Register() {
               </>)}
 
 
-
-
-
             {
               //! second step inputs !! 
               step === 2 &&
 
               (<>
 
+                <div className="flex justify-between items-center gap-4">
+                  <div className="flex-1">
+                    <label
+                      htmlFor="firstname"
+                      className="ml-2 text-sm sm:text-base text-gray-900"
+                    >
+                      First name
+                    </label>
+                    <input
+                      id="firstname"
+                      name="firstname"
+                      type="text"
+                      required
+                      className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                      value={form.firstname}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <label htmlFor="lastname" className="ml-2 text-sm sm:text-base text-gray-900">
+                      Last name
+                    </label>
+                    <input
+                      id="lastname"
+                      name="lastname"
+                      type="text"
+                      required
+                      className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                      value={form.lastname}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                </div>
+
+                <div>
+                  <label htmlFor="birthDay" className="ml-2 text-sm sm:text-base text-gray-900">
+                    Birth day
+                  </label>
+                  <input
+                    id="birthDay"
+                    name="birthDay"
+                    type="date"
+                    required
+                    className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                    value={form.birthDay}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div>
+                <label htmlFor="gender" className="ml-2 text-sm sm:text-base text-gray-900">
+                  Gender
+                </label>
+                <select
+                  id="gender"
+                  name="gender"
+                  className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                  value={form.gender}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </select>
+                </div>
+
+                <div className="flex justify-between items-center gap-4">
+                  <div className="flex-1">
+                    <label
+                      htmlFor="country"
+                      className="ml-2 text-sm sm:text-base text-gray-900"
+                    >
+                      Country
+                    </label>
+                    <input
+                      id="country"
+                      name="country"
+                      type="text"
+                      required
+                      className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                      value={form.country}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <label htmlFor="city" className="ml-2 text-sm sm:text-base text-gray-900">
+                    City
+                    </label>
+                    <input
+                      id="city"
+                      name="city"
+                      type="text"
+                      required
+                      className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                      value={form.city}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                </div>
+              </>)
+            }
 
 
 
+            {
+              //! third step inputs !! 
+              step === 3 &&
+
+              (<>
+                <label className="ml-2 text-sm sm:text-base text-gray-900">
+                  pfp - banner
+                </label>
                 <div className="relative w-full flex justify-center items-center rounded-md overflow-hidden py-2 bg-red-300">
                   {/* Profile Picture Input */}
                   <input
@@ -206,12 +316,6 @@ function Register() {
                   </label>
                 </div>
 
-
-
-
-
-
-
                 <div>
                   <label
                     htmlFor="email-or-phone"
@@ -229,23 +333,7 @@ function Register() {
                     onChange={handleChange}
                   />
                 </div>
-                <div>
-                  <label htmlFor="gender" className="ml-2 text-sm sm:text-base text-gray-900">
-                    Gender
-                  </label>
-                  <select
-                    id="gender"
-                    name="gender"
-                    className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
-                    value={form.gender}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="male">male</option>
-                    <option value="female">female</option>
-                  </select>
 
-                </div>
                 <div>
                   <label htmlFor="bio" className="ml-2 text-sm sm:text-base text-gray-900">
                     Bio
@@ -258,7 +346,7 @@ function Register() {
                     className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
                     value={form.bio}
                     onChange={handleChange}
-                    rows="2"
+                    rows="4"
                   />
                 </div>
               </>)

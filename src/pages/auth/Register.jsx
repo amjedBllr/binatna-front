@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faInstagram, faSquareInstagram, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import pfpPreview from '../../assets/images/pfpPreview.png'
+import bannerPreview from '../../assets/images/bannerPreview.png'
 
 function Register() {
 
@@ -19,6 +21,7 @@ function Register() {
     lastname: "",
     birthDay: "",
     phoneNumber: "",
+    banner: null,
     pfp: null,
     bio: "",
     country: "",
@@ -46,6 +49,30 @@ function Register() {
   const handleNext = _ => {
     setStep(step + 1)
   }
+
+  //? handle pfp change 
+
+  const handlePfpChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setForm(prev => {
+        return ({ ...prev, pfp: file })
+      });
+    }
+  };
+
+
+  //? handle pfp change 
+
+  const handleBannerChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setForm(prev => {
+        return ({ ...prev, banner: file })
+      });
+    }
+  };
+
   //?form submition button
 
   const handleSubmit = async (event) => {
@@ -144,7 +171,47 @@ function Register() {
 
               (<>
 
-              //!zid div ta3 pfp
+
+
+
+                <div className="relative w-full flex justify-center items-center rounded-md overflow-hidden py-2 bg-red-300">
+                  {/* Profile Picture Input */}
+                  <input
+                    id="pfp"
+                    name="pfp"
+                    type="file"
+                    accept="image/*"
+                    className="hidden z-20"
+                    onChange={handlePfpChange}
+                  />
+                  <label htmlFor="pfp" className="cursor-pointer z-20">
+                    <div className="relative w-20 h-20 rounded-full border border-gray-300 overflow-hidden flex items-center justify-center">
+                      <img src={form.pfp === null ? pfpPreview : URL.createObjectURL(form.pfp)} alt="Profile Preview" className="object-cover w-full h-full" />
+                    </div>
+                  </label>
+
+                  {/* Banner Image Input */}
+                  <input
+                    id="banner"
+                    name="banner"
+                    type="file"
+                    accept="image/*"
+                    className="hidden absolute inset-0 w-full h-full"
+                    onChange={handleBannerChange}
+                  />
+                  <label htmlFor="banner" className="cursor-pointer absolute top-0 bottom-0 left-0 right-0">
+                    <div className="relative w-full h-40 bg-gray-200 border border-gray-300 rounded-lg overflow-hidden flex items-center justify-center">
+                      <img src={form.banner === null ? bannerPreview : URL.createObjectURL(form.banner)} alt="Banner Preview" className="object-cover w-full h-full" />
+                    </div>
+                  </label>
+                </div>
+
+
+
+
+
+
+
                 <div>
                   <label
                     htmlFor="email-or-phone"
@@ -181,7 +248,7 @@ function Register() {
                 </div>
                 <div>
                   <label htmlFor="bio" className="ml-2 text-sm sm:text-base text-gray-900">
-                  Bio
+                    Bio
                   </label>
                   <textarea
                     id="bio"
@@ -191,6 +258,7 @@ function Register() {
                     className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
                     value={form.bio}
                     onChange={handleChange}
+                    rows="2"
                   />
                 </div>
               </>)
@@ -199,12 +267,16 @@ function Register() {
 
           </div>
           <div className="w-full flex justify-between items-center gap-5">
-            <button onClick={_ => {
-              setStep(step - 1)
-            }}
-              className="flex-1 button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
-              &#8592; &nbsp; &nbsp; Prev
-            </button>
+            {
+              (step >= 2) && (
+                <button onClick={_ => {
+                  setStep(step - 1)
+                }}
+                  className="flex-1 button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
+                  &#8592; &nbsp; &nbsp; Prev
+                </button>
+              )
+            }
             <button onClick={_ => {
               setStep(step + 1)
             }}

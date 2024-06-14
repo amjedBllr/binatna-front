@@ -71,13 +71,13 @@ function Register() {
 
   return (
     <div className="w-full h-full flex justify-center md:justify-start items-center">
-      <div className="w-10/12 sm:w-8/12 h-5/6 py-10 px-5 sm:px-10 rounded-xl space-y-2">
+      <div className="w-10/12 sm:w-8/12 h-5/6 sm:h-full py-10 px-5 sm:px-10 rounded-xl space-y-2">
         <div>
           <h2 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 pb-5">
             REGISTER
           </h2>
         </div>
-        <form className=" flex flex-col h-4/6" onSubmit={handleSubmit}>
+        <form className=" flex flex-col justify-between h-4/6" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-3">
 
 
@@ -149,44 +149,47 @@ function Register() {
 
           </div>
           <div className="w-full flex justify-between items-center gap-5">
-          <button onClick={_ => {
+            <button onClick={_ => {
               setStep(step - 1)
             }}
               className="flex-1 button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
-              Prev
+              &#8592; &nbsp; &nbsp; Prev
             </button>
             <button onClick={_ => {
               setStep(step + 1)
             }}
               className="flex-1 button mt-9 bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
-              Next
+              Next &nbsp; &nbsp; &#8594;
             </button>
           </div>
 
         </form>
-        <div>
-          <p className="text-center text-gray-500 text-sm">
-            You already have an account?{" "}
-            <Link
-              to="/auth/register"
-              className="font-medium text-secondary hover:text-primary"
-            >
-              Sign in
-            </Link>
-          </p>
-        </div>
-        <h3 className="text-center font-medium p-5">OR continue with</h3>
-        <div className="flex justify-center align-baseline gap-10">
-          <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
-            <FontAwesomeIcon icon={faGoogle} className="scale-125" />
+        {step === 1 && (<>
+          <div>
+            <p className="text-center text-gray-500 text-sm">
+              You already have an account?{" "}
+              <Link
+                to="/auth/register"
+                className="font-medium text-secondary hover:text-primary"
+              >
+                Sign in
+              </Link>
+            </p>
           </div>
-          <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
-            <FontAwesomeIcon icon={faInstagram} className="scale-150" />
+          <h3 className="text-center font-medium p-5">OR continue with</h3>
+          <div className="flex justify-center align-baseline gap-10">
+            <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
+              <FontAwesomeIcon icon={faGoogle} className="scale-125" />
+            </div>
+            <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
+              <FontAwesomeIcon icon={faInstagram} className="scale-150" />
+            </div>
+            <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
+              <FontAwesomeIcon icon={faFacebookF} className="scale-125" />
+            </div>
           </div>
-          <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
-            <FontAwesomeIcon icon={faFacebookF} className="scale-125" />
-          </div>
-        </div>
+        </>)}
+
       </div>
     </div>
   )

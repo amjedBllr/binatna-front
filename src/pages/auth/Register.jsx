@@ -34,7 +34,7 @@ function Register() {
   });
 
   //? form appearence helper state
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(3)
 
   const [message, setMessage] = useState("")
 
@@ -42,6 +42,10 @@ function Register() {
 
   const score = form.password !== "" ? passwordStrength.score : -1;
 
+  const [age, setAge] = useState(null);
+
+  
+  
   //?bar atts based on score , ez
 
   const getStrengthColor = (score) => {
@@ -67,6 +71,21 @@ function Register() {
     }
   };
 
+  //? so we can calcule the age and work based on it
+
+  const calculateAge = (birthDay) => {
+    const birthDate = new Date(birthDay);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+
+    return age;
+  };
+
 
   //?handle value typed inputs
   const handleChange = (e) => {
@@ -74,14 +93,18 @@ function Register() {
       ...form,
       [e.target.name]: e.target.value,
     });
+
+    if (e.target.name === 'birthDay') {
+      setAge(calculateAge(e.target.value));
+    }
     //console.log(form);
+    console.log(age)
   };
 
   //? next  button handler
 
 
   const handleNext = () => {
-    if (step <= 2) {
       switch (step) {
 
         case 1:
@@ -111,16 +134,33 @@ function Register() {
             setMessage("Please fill out all required fields.");
             return;
           }
+          if (age<12 ) {
+            setMessage("sorry , you'll need to be older than 12.");
+            return;
+          }
+          break;
+
+          case 3:
+          if (!form.username || !form.bio || !form.pfp || !form.banner) {
+            if(!form.pfp) setMessage("Please add a profile picture !!");
+            else if(!form.banner) setMessage("Please add a banner !!");
+            else setMessage("Please fill out all required fields.");
+            return;
+          }
           break;
 
         default:
           break;
+
+
+        
       }
+
       setMessage("");
-      setStep(step + 1);
-    } else {
-      handleSubmit();
-    }
+
+      if(step<=2) setStep(step + 1);
+
+      else handleSubmit();
   };
 
 
@@ -151,16 +191,15 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setMessage('submitting ...')
   };
 
   useEffect(() => {
     setPasswordStrength(zxcvbn(form.password));
-    console.log(passwordStrength)
-
-
   }, [form.password])
 
+
+  
 
   return (
     <div className="w-full h-full flex justify-center md:justify-start items-center">
@@ -367,6 +406,7 @@ function Register() {
                     accept="image/*"
                     className="hidden z-20"
                     onChange={handlePfpChange}
+                    required
                   />
                   <label htmlFor="pfp" className="cursor-pointer z-20">
                     <div className="relative w-20 h-20 rounded-full border border-gray-300 overflow-hidden flex items-center justify-center">
@@ -382,6 +422,7 @@ function Register() {
                     accept="image/*"
                     className="hidden absolute inset-0 w-full h-full"
                     onChange={handleBannerChange}
+                    required
                   />
                   <label htmlFor="banner" className="cursor-pointer absolute top-0 bottom-0 left-0 right-0">
                     <div className="relative w-full h-40 bg-gray-200 border border-gray-300 rounded-lg overflow-hidden flex items-center justify-center">

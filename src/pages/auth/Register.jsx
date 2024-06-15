@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faInstagram, faSquareInstagram, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import pfpPreview from '../../assets/images/pfpPreview.png'
 import bannerPreview from '../../assets/images/bannerPreview.png'
+import zxcvbn from 'zxcvbn';
+import validator from 'validator'
 
 function Register() {
 
@@ -36,13 +38,43 @@ function Register() {
 
   const [message, setMessage] = useState("")
 
+  const [passwordStrength, setPasswordStrength] = useState('')
+
+  const score = form.password !== "" ? passwordStrength.score : -1;
+
+  //?bar atts based on score , ez
+
+  const getStrengthColor = (score) => {
+    switch (score) {
+      case 0: return 'bg-red-500';
+      case 1: return 'bg-orange-500';
+      case 2: return 'bg-yellow-500';
+      case 3: return 'bg-blue-500';
+      case 4: return 'bg-green-500';
+      default: return 'bg-gray-300';
+    }
+  };
+
+  const getStrengthWidth = (score) => {
+    switch (score) {
+      case -1: return '0%';
+      case 0: return '20%';
+      case 1: return '40%';
+      case 2: return '60%';
+      case 3: return '80%';
+      case 4: return '100%';
+      default: return '0%';
+    }
+  };
+
+
   //?handle value typed inputs
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
+    //console.log(form);
   };
 
   //? next  button handler
@@ -51,22 +83,36 @@ function Register() {
   const handleNext = () => {
     if (step <= 2) {
       switch (step) {
+
         case 1:
-          if (form.password !== form.coPassword) {
-            setMessage("Passwords do not match!");
-            return;
-          }
+
           if (!form.email || !form.password || !form.coPassword) {
             setMessage("Please fill out all required fields.");
             return;
           }
+          if (!validator.isEmail(form.email)) {
+            setMessage("Invalid email address");
+            return;
+          }
+          if (passwordStrength.score < 3) {
+            setMessage("Password is too weak !!");
+            return;
+          }
+          if (form.password !== form.coPassword) {
+            setMessage("Passwords do not match!");
+            return;
+          }
+
           break;
+
+
         case 2:
           if (!form.firstname || !form.lastname || !form.birthDay || !form.gender || !form.country || !form.city) {
             setMessage("Please fill out all required fields.");
             return;
           }
           break;
+
         default:
           break;
       }
@@ -105,24 +151,16 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!isLoggedIn) {
-      try {
-        const login = await axios.post(
-          `${serverUrl}/api/v1/auth/login`, form, { withCredentials: true })
-        let role = login.data.data.role;
-        setChanged(true)
-        if (role === 'client') navigate('/client/home')
-        else if (role === 'seller') navigate('/seller/home/store')
-        else if (role === 'admin') navigate('/admin/home')
-      } catch (error) {
-        console.log(error.response.data)
-      }
-    }
+
   };
 
   useEffect(() => {
+    setPasswordStrength(zxcvbn(form.password));
+    console.log(passwordStrength)
 
-  }, [])
+
+  }, [form.password])
+
 
   return (
     <div className="w-full h-full flex justify-center md:justify-start items-center">
@@ -132,7 +170,7 @@ function Register() {
             REGISTER
           </h2>
         </div>
-        <form className={`flex flex-col justify-between ${(step === 1) ? "h-4/6" : "h-5/6"} `} onSubmit={handleSubmit}>
+        <form className={`flex flex-col justify-between  ${(step === 1) ? "h-fit" : "h-5/6"} `} onSubmit={handleSubmit}>
           <div className="flex flex-col gap-3">
 
 
@@ -173,6 +211,15 @@ function Register() {
                     onChange={handleChange}
                   />
                 </div>
+
+                {/*password strenght bar*/}
+                <div className="w-full bg-gray-300 rounded">
+                  <div
+                    className={`h-2 rounded ${getStrengthColor(score)}`}
+                    style={{ width: getStrengthWidth(score) }}
+                  ></div>
+                </div>
+
                 <div>
                   <label htmlFor="coPassword" className="ml-2 text-sm sm:text-base text-gray-900">
                     Confirm password
@@ -384,7 +431,8 @@ function Register() {
 
           <div className="flex flex-col justify-between gap-2">
             <p className="text-red-400 text-sm pl-3">
-              {message}
+              <br/>
+              {message ? message : "\u00A0"}
             </p>
             <div className="w-full flex justify-between items-center gap-5">
               {

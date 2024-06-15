@@ -402,7 +402,7 @@ function Register() {
 
   const handleBack = (event) => {
     event.preventDefault()
-    
+
     if (step > 1) {
       setStep(step - 1);
       setMessage(""); // Clear any existing error messages when navigating back
@@ -442,7 +442,7 @@ function Register() {
   
 
   return (
-    <div className="w-full h-full flex justify-center md:justify-start items-center">
+    <div className="w-full h-full overflow-hidden flex justify-center md:justify-start items-center">
       <div className="w-10/12 sm:w-8/12 h-5/6 sm:h-full py-10 px-5 sm:px-10 rounded-xl space-y-2">
         <div>
           <h2 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 pb-5">

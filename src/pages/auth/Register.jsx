@@ -288,7 +288,7 @@ function Register() {
   });
 
   //? form appearence helper state
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(3)
 
   const [message, setMessage] = useState("")
 
@@ -364,6 +364,11 @@ function Register() {
           setMessage("Please fill out all required fields.");
           return;
         }
+        else if (form.country=="Israel") {
+          setMessage("We don't take kids killers here , gtfo !!");
+          return;
+        }
+
         break;
 
       case 3:
@@ -420,8 +425,12 @@ function Register() {
 
   //?form submition button
 
-  const handleSubmit = async (event) => {
+  const handleSubmit =  (event) => {
+    event.preventDefault()
     setMessage('submiting...')
+    for(let i=0;i<=9;i++){
+      console.log(i)
+    }
   };
 
   useEffect(() => {
@@ -725,7 +734,7 @@ function Register() {
                   </button>
                 )
               }
-              <button onClick={handleNext}
+              <button onClick={handleNext} type="submit"
                 className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
                 {step === 3 ? "Submit" : "Next \u00A0 \u00A0 \u2192"}
               </button>

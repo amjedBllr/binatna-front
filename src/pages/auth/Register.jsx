@@ -400,7 +400,8 @@ function Register() {
       window.alert('submiting...')
     };
 
-  const handleBack = () => {
+  const handleBack = (event) => {
+    event.preventDefault()
     
     if (step > 1) {
       setStep(step - 1);

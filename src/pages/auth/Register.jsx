@@ -11,7 +11,261 @@ import validator from 'validator'
 
 function Register() {
 
-  const navigate = useNavigate();
+  //? countries list 
+  const countries = [
+    "Afghanistan",
+    "Aland Islands",
+    "Albania",
+    "Algeria",
+    "American Samoa",
+    "Andorra",
+    "Angola",
+    "Anguilla",
+    "Antarctica",
+    "Antigua and Barbuda",
+    "Argentina",
+    "Armenia",
+    "Aruba",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin",
+    "Bermuda",
+    "Bhutan",
+    "Bolivia",
+    "Bonaire, Sint Eustatius and Saba",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Bouvet Island",
+    "Brazil",
+    "British Indian Ocean Territory",
+    "Brunei Darussalam",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Cape Verde",
+    "Cayman Islands",
+    "Central African Republic",
+    "Chad",
+    "Chile",
+    "China",
+    "Christmas Island",
+    "Cocos (Keeling) Islands",
+    "Colombia",
+    "Comoros",
+    "Congo",
+    "Congo, Democratic Republic of the Congo",
+    "Cook Islands",
+    "Costa Rica",
+    "Cote D'Ivoire",
+    "Croatia",
+    "Cuba",
+    "Curacao",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Djibouti",
+    "Dominica",
+    "Dominican Republic",
+    "Ecuador",
+    "Egypt",
+    "El Salvador",
+    "Equatorial Guinea",
+    "Eritrea",
+    "Estonia",
+    "Ethiopia",
+    "Falkland Islands (Malvinas)",
+    "Faroe Islands",
+    "Fiji",
+    "Finland",
+    "France",
+    "French Guiana",
+    "French Polynesia",
+    "French Southern Territories",
+    "Gabon",
+    "Gambia",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Gibraltar",
+    "Greece",
+    "Greenland",
+    "Grenada",
+    "Guadeloupe",
+    "Guam",
+    "Guatemala",
+    "Guernsey",
+    "Guinea",
+    "Guinea-Bissau",
+    "Guyana",
+    "Haiti",
+    "Heard Island and McDonald Islands",
+    "Holy See (Vatican City State)",
+    "Honduras",
+    "Hong Kong",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran, Islamic Republic of",
+    "Iraq",
+    "Ireland",
+    "Isle of Man",
+    "Israel",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jersey",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kiribati",
+    "Korea, Democratic People's Republic of",
+    "Korea, Republic of",
+    "Kosovo",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Lao People's Democratic Republic",
+    "Latvia",
+    "Lebanon",
+    "Lesotho",
+    "Liberia",
+    "Libyan Arab Jamahiriya",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Macao",
+    "Macedonia, the Former Yugoslav Republic of",
+    "Madagascar",
+    "Malawi",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Marshall Islands",
+    "Martinique",
+    "Mauritania",
+    "Mauritius",
+    "Mayotte",
+    "Mexico",
+    "Micronesia, Federated States of",
+    "Moldova, Republic of",
+    "Monaco",
+    "Mongolia",
+    "Montenegro",
+    "Montserrat",
+    "Morocco",
+    "Mozambique",
+    "Myanmar",
+    "Namibia",
+    "Nauru",
+    "Nepal",
+    "Netherlands",
+    "Netherlands Antilles",
+    "New Caledonia",
+    "New Zealand",
+    "Nicaragua",
+    "Niger",
+    "Nigeria",
+    "Niue",
+    "Norfolk Island",
+    "Northern Mariana Islands",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Palau",
+    "Palestinian Territory, Occupied",
+    "Panama",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Pitcairn",
+    "Poland",
+    "Portugal",
+    "Puerto Rico",
+    "Qatar",
+    "Reunion",
+    "Romania",
+    "Russian Federation",
+    "Rwanda",
+    "Saint Barthelemy",
+    "Saint Helena",
+    "Saint Kitts and Nevis",
+    "Saint Lucia",
+    "Saint Martin",
+    "Saint Pierre and Miquelon",
+    "Saint Vincent and the Grenadines",
+    "Samoa",
+    "San Marino",
+    "Sao Tome and Principe",
+    "Saudi Arabia",
+    "Senegal",
+    "Serbia",
+    "Serbia and Montenegro",
+    "Seychelles",
+    "Sierra Leone",
+    "Singapore",
+    "St Martin",
+    "Slovakia",
+    "Slovenia",
+    "Solomon Islands",
+    "Somalia",
+    "South Africa",
+    "South Georgia and the South Sandwich Islands",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Suriname",
+    "Svalbard and Jan Mayen",
+    "Swaziland",
+    "Sweden",
+    "Switzerland",
+    "Syrian Arab Republic",
+    "Taiwan, Province of China",
+    "Tajikistan",
+    "Tanzania, United Republic of",
+    "Thailand",
+    "Timor-Leste",
+    "Togo",
+    "Tokelau",
+    "Tonga",
+    "Trinidad and Tobago",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Turks and Caicos Islands",
+    "Tuvalu",
+    "Uganda",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States",
+    "United States Minor Outlying Islands",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Venezuela",
+    "Viet Nam",
+    "Virgin Islands, British",
+    "Virgin Islands, U.s.",
+    "Wallis and Futuna",
+    "Western Sahara",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe"
+];
 
   //? form information
   const [form, setForm] = useState({
@@ -27,14 +281,14 @@ function Register() {
     pfp: null,
     bio: "",
     country: "",
-    city: "",
+    postalCode: "",
     gender: "",
     languagePref: "",
     ipAddress: ""
   });
 
   //? form appearence helper state
-  const [step, setStep] = useState(3)
+  const [step, setStep] = useState(2)
 
   const [message, setMessage] = useState("")
 
@@ -43,8 +297,6 @@ function Register() {
   const score = form.password !== "" ? passwordStrength.score : -1;
 
   const [age, setAge] = useState(null);
-
-  
   
   //?bar atts based on score , ez
 
@@ -71,20 +323,6 @@ function Register() {
     }
   };
 
-  //? so we can calcule the age and work based on it
-
-  const calculateAge = (birthDay) => {
-    const birthDate = new Date(birthDay);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDifference = today.getMonth() - birthDate.getMonth();
-
-    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-
-    return age;
-  };
 
 
   //?handle value typed inputs
@@ -94,76 +332,69 @@ function Register() {
       [e.target.name]: e.target.value,
     });
 
-    if (e.target.name === 'birthDay') {
-      setAge(calculateAge(e.target.value));
-    }
     //console.log(form);
-    console.log(age)
+    
   };
 
   //? next  button handler
 
-
   const handleNext = () => {
-      switch (step) {
+    switch (step) {
+      case 1:
+        if (!form.email || !form.password || !form.coPassword) {
+          setMessage("Please fill out all required fields.");
+          return;
+        }
+        if (!validator.isEmail(form.email)) {
+          setMessage("Invalid email address");
+          return;
+        }
+        if (passwordStrength.score < 3) {
+          setMessage("Password is too weak!");
+          return;
+        }
+        if (form.password !== form.coPassword) {
+          setMessage("Passwords do not match!");
+          return;
+        }
+        break;
 
-        case 1:
+      case 2:
+        if (!form.firstname || !form.lastname || !form.birthDay || !form.gender || !form.country) {
+          setMessage("Please fill out all required fields.");
+          return;
+        }
+        break;
 
-          if (!form.email || !form.password || !form.coPassword) {
-            setMessage("Please fill out all required fields.");
-            return;
-          }
-          if (!validator.isEmail(form.email)) {
-            setMessage("Invalid email address");
-            return;
-          }
-          if (passwordStrength.score < 3) {
-            setMessage("Password is too weak !!");
-            return;
-          }
-          if (form.password !== form.coPassword) {
-            setMessage("Passwords do not match!");
-            return;
-          }
+      case 3:
+        if (!form.username || !form.bio || !form.pfp || !form.banner) {
+          if (!form.pfp) setMessage("Please add a profile picture!");
+          else if (!form.banner) setMessage("Please add a banner!");
+          else setMessage("Please fill out all required fields.");
+          return;
+        }
+        break;
 
-          break;
+      default:
+        break;
+    }
 
+    setMessage(""); // Clear any existing messages
 
-        case 2:
-          if (!form.firstname || !form.lastname || !form.birthDay || !form.gender || !form.country || !form.city) {
-            setMessage("Please fill out all required fields.");
-            return;
-          }
-          if (age<12 ) {
-            setMessage("sorry , you'll need to be older than 12.");
-            return;
-          }
-          break;
-
-          case 3:
-          if (!form.username || !form.bio || !form.pfp || !form.banner) {
-            if(!form.pfp) setMessage("Please add a profile picture !!");
-            else if(!form.banner) setMessage("Please add a banner !!");
-            else setMessage("Please fill out all required fields.");
-            return;
-          }
-          break;
-
-        default:
-          break;
-
-
-        
-      }
-
-      setMessage("");
-
-      if(step<=2) setStep(step + 1);
-
-      else handleSubmit();
+    if (step < 3) {
+      setStep(step + 1);
+    } else {
+      handleSubmit(); // Call submit function here when all steps are completed
+    }
   };
 
-
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(step - 1);
+      setMessage(""); // Clear any existing error messages when navigating back
+    }
+  };
+  
   //? handle pfp change 
 
   const handlePfpChange = (event) => {
@@ -190,8 +421,7 @@ function Register() {
   //?form submition button
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setMessage('submitting ...')
+    setMessage('submiting...')
   };
 
   useEffect(() => {
@@ -334,6 +564,10 @@ function Register() {
                 </div>
 
                 <div>
+                <label
+                      htmlFor="country"
+                      className="ml-2 text-sm sm:text-base text-gray-900"
+                    >Gender</label>
                   <select
                     id="gender"
                     name="gender"
@@ -357,28 +591,35 @@ function Register() {
                     >
                       Country
                     </label>
-                    <input
-                      id="country"
-                      name="country"
-                      type="text"
-                      required
-                      className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
-                      value={form.country}
-                      onChange={handleChange}
-                    />
+                    <select
+                    id="country"
+                    name="country"
+                    className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-secondary sm:text-sm"
+                    value={form.country}
+                    onChange={handleChange}
+                    required
+                    size="1"
+                  >
+                    <option value="">Select a country</option>
+                    {
+                      countries.map((c)=>{
+                        return(<option key={c} value={c}>{c}</option>)
+                      })
+                    }
+                  </select>
                   </div>
 
                   <div className="flex-1">
-                    <label htmlFor="city" className="ml-2 text-sm sm:text-base text-gray-900">
-                      City
+                    <label htmlFor="postalCode" className="ml-2 text-sm sm:text-base text-gray-900">
+                      Postal code
                     </label>
                     <input
-                      id="city"
-                      name="city"
+                      id="postalCode"
+                      name="postalCode"
                       type="text"
                       required
                       className="input mt-2 appearance-none block w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-lg  placeholder-gray-400 focus:outline-secondary sm:text-sm"
-                      value={form.city}
+                      value={form.postalCode}
                       onChange={handleChange}
                     />
                   </div>
@@ -478,9 +719,7 @@ function Register() {
             <div className="w-full flex justify-between items-center gap-5">
               {
                 (step >= 2) && (
-                  <button onClick={_ => {
-                    setStep(step - 1)
-                  }}
+                  <button onClick={handleBack}
                     className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
                     &#8592; &nbsp; &nbsp; Prev
                   </button>

@@ -443,13 +443,13 @@ function Register() {
 
   return (
     <div className="w-full h-full overflow-hidden flex justify-center md:justify-start items-center">
-      <div className="w-10/12 sm:w-8/12 h-5/6 sm:h-full py-10 px-5 sm:px-10 rounded-xl space-y-2">
+      <div className="flex flex-col w-10/12 h-full sm:w-8/12 sm:h-full py-10 px-5 sm:px-10 rounded-xl space-y-2">
         <div>
-          <h2 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 pb-5">
+          <h2 className="flex-1 text-center text-2xl sm:text-3xl font-bold text-gray-900 pb-5">
             REGISTER
           </h2>
         </div>
-        <form className={`flex flex-col justify-between  ${(step === 1) ? "h-fit" : "h-5/6"} `}>
+        <form className={` flex-4 flex flex-col justify-between  ${(step === 1) ? "h-fit" : "h-5/6"} `}>
           <div className="flex flex-col gap-3">
 
 
@@ -744,8 +744,8 @@ function Register() {
 
 
         </form>
-        {step === 1 && (<>
-          <div>
+        {step === 1 && (<div className="flex-2 -space-y-1">
+          <div className="flex-1">
             <p className="text-center text-gray-500 text-sm">
               You already have an account?{" "}
               <Link
@@ -756,7 +756,7 @@ function Register() {
               </Link>
             </p>
           </div>
-          <h3 className="text-center font-medium p-5">OR continue with</h3>
+          <h3 className="text-center font-medium py-5">OR continue with</h3>
           <div className="flex justify-center align-baseline gap-10">
             <div className="w-10 aspect-square flex justify-center items-center gap-5 border-black-100 text-black-100 border-2 rounded-xl hover:border-secondary hover:text-secondary cursor-pointer">
               <FontAwesomeIcon icon={faGoogle} className="scale-125" />
@@ -768,7 +768,7 @@ function Register() {
               <FontAwesomeIcon icon={faFacebookF} className="scale-125" />
             </div>
           </div>
-        </>)}
+        </div>)}
 
       </div>
     </div>

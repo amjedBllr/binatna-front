@@ -288,7 +288,7 @@ function Register() {
   });
 
   //? form appearence helper state
-  const [step, setStep] = useState(3)
+  const [step, setStep] = useState(1)
 
   const [message, setMessage] = useState("")
 
@@ -296,8 +296,6 @@ function Register() {
 
   const score = form.password !== "" ? passwordStrength.score : -1;
 
-  const [age, setAge] = useState(null);
-  
   //?bar atts based on score , ez
 
   const getStrengthColor = (score) => {
@@ -338,7 +336,10 @@ function Register() {
 
   //? next  button handler
 
-  const handleNext = () => {
+  const handleNext = (event) => {
+
+    event.preventDefault()
+
     switch (step) {
       case 1:
         if (!form.email || !form.password || !form.coPassword) {
@@ -393,7 +394,14 @@ function Register() {
     }
   };
 
+    //?form submition button
+
+    const handleSubmit =  () => {
+      window.alert('submiting...')
+    };
+
   const handleBack = () => {
+    
     if (step > 1) {
       setStep(step - 1);
       setMessage(""); // Clear any existing error messages when navigating back
@@ -423,15 +431,7 @@ function Register() {
     }
   };
 
-  //?form submition button
 
-  const handleSubmit =  (event) => {
-    event.preventDefault()
-    setMessage('submiting...')
-    for(let i=0;i<=9;i++){
-      console.log(i)
-    }
-  };
 
   useEffect(() => {
     setPasswordStrength(zxcvbn(form.password));
@@ -448,7 +448,7 @@ function Register() {
             REGISTER
           </h2>
         </div>
-        <form className={`flex flex-col justify-between  ${(step === 1) ? "h-fit" : "h-5/6"} `} onSubmit={handleSubmit}>
+        <form className={`flex flex-col justify-between  ${(step === 1) ? "h-fit" : "h-5/6"} `}>
           <div className="flex flex-col gap-3">
 
 
@@ -734,7 +734,7 @@ function Register() {
                   </button>
                 )
               }
-              <button onClick={handleNext} type="submit"
+              <button onClick={handleNext}
                 className="flex-1 button bg-secondary hover:bg-primary py-3 rounded-md text-white-200 font-medium mb-5">
                 {step === 3 ? "Submit" : "Next \u00A0 \u00A0 \u2192"}
               </button>
